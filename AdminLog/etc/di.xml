@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="eventlog_index_listing_data_source" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\Adminlog\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Pasha\AdminLog\Model\ResourceModel\Adminlog\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">adminlog</argument>
+            <argument name="resourceModel" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\Adminlog</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="eventlog_index_listing_view_data_source" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\AdminlogDetails\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Pasha\AdminLog\Model\ResourceModel\AdminlogDetails\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">details</argument>
+            <argument name="resourceModel" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\AdminlogDetails</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Pasha\AdminLog\Api\Data\AdminLogInterface" type="Pasha\AdminLog\Model\AdminlogModel"/>
+    <preference for="Pasha\AdminLog\Api\LogRepositoryInterface" type="Pasha\AdminLog\Model\LogRepository"/>
+    <preference for="Pasha\AdminLog\Api\Data\AdminLogDetailsInterface" type="Pasha\AdminLog\Model\AdminLogDetailsModel"/>
+    <preference for="Pasha\AdminLog\Api\LogDetailsRepositoryInterface" type="Pasha\AdminLog\Model\LogRepositoryDetails"/>
+
+    <type name="Magento\Catalog\Model\ResourceModel\Category">
+        <plugin name="DataLog" type="Pasha\AdminLog\Plugin\LogPlugin" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Cms\Model\ResourceModel\Page">
+        <plugin name="CmsPageLog" type="Pasha\AdminLog\Plugin\LogCmsPlugin" sortOrder="11"/>
+    </type>
+
+    <type name="Magento\Cms\Model\ResourceModel\Page">
+        <plugin name="CmsPageLogDelete" type="Pasha\AdminLog\Plugin\DeleteCmsPlugin" sortOrder="12"/>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="eventlog_cms_listing_data_source" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\AdminLogCmsPage\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Pasha\AdminLog\Model\ResourceModel\AdminLogCmsPage\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">cms_page_custom</argument>
+            <argument name="resourceModel" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\AdminLogCmsPage</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="eventlog_cms_listing_view_data_source" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\AdminLogCmsPageDetails\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Pasha\AdminLog\Model\ResourceModel\AdminLogCmsPageDetails\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">cms_page_custom_details</argument>
+            <argument name="resourceModel" xsi:type="string">Pasha\AdminLog\Model\ResourceModel\AdminLogCmsPageDetails</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Pasha\AdminLog\Api\Data\AdminLogCmsPageInterface" type="Pasha\AdminLog\Model\AdminLogCmsPageModel"/>
+    <preference for="Pasha\AdminLog\Api\LogCmsPageRepositoryInterface" type="Pasha\AdminLog\Model\CmsLogRepository"/>
+    <preference for="Pasha\AdminLog\Api\Data\AdminLogCmsPageDetailsInterface" type="Pasha\AdminLog\Model\AdminLogCmsPageDetailsModel"/>
+    <preference for="Pasha\AdminLog\Api\LogCmsPageDetailsRepositoryInterface" type="Pasha\AdminLog\Model\CmsLogDetailsRepository"/>
+</config>

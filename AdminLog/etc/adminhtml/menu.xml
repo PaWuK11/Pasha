@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Pasha_AdminLog::home"
+            title="AdminLogs"
+            module="Pasha_AdminLog"
+            sortOrder="21"
+            resource="Pasha_AdminLog::home"
+        />
+        <add
+            id="Pasha_AdminLog::grid"
+            title="Admin Logs Catalog"
+            module="Pasha_AdminLog"
+            sortOrder="10"
+            action="eventlog/index/index"
+            parent="Pasha_AdminLog::home"
+            resource="Pasha_AdminLog::grid"
+        />
+        <add
+            id="Pasha_AdminLog::list"
+            title="Admin Logs CMS Page"
+            module="Pasha_AdminLog"
+            sortOrder="20"
+            action="eventlog/cms/index"
+            parent="Pasha_AdminLog::home"
+            resource="Pasha_AdminLog::list"
+        />
+    </menu>
+</config>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">eventlog_index_listing_view.eventlog_index_listing_view_data_source</item>
+            <item name="deps" xsi:type="string">eventlog_index_listing_view.eventlog_index_listing_view_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">eventlog_index_columns</item>
+    </argument>
+
+
+    <dataSource name="eventlog_index_listing_view_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">eventlog_index_listing_view_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="parent_id" xsi:type="string">*</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <columns name="eventlog_index_columns">
+        <column name="field">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Field</label>
+            </settings>
+        </column>
+        <column name="old_data">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Old Data</label>
+            </settings>
+        </column>
+        <column name="new_data">
+            <settings>
+                <label translate="true">New Data</label>
+            </settings>
+        </column>
+        <column name="object_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Object Id</label>
+            </settings>
+        </column>
+    </columns>
+
+</listing>

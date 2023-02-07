@@ -1,0 +1,14 @@
+{
+    "name": "pasha/module-atribut",
+    "description": "N/A",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Pasha\\Atribut\\": ""
+        }
+    }
+}
+
