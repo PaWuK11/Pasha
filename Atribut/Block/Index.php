@@ -1,6 +1,6 @@
 <?php
 
-namespace Pasha\Atriibut\Block;
+namespace Pasha\Atribut\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
